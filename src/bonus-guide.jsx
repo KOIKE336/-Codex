@@ -1,0 +1,402 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./bonus-guide.css";
+
+const setupStep = {
+  title: "迷ったら、まずこれだけ",
+  time: "最短ルート",
+  file: "00_CODEX_SETUP_PROMPT.md",
+  href: "affiliate-bonus-pack/00_CODEX_SETUP_PROMPT.md",
+  body: "中のプロンプトを丸ごとCodexに貼るだけで、推奨フォルダと初期Markdownファイルをまとめて作れます。手作業が不安な人は、このルートが一番ラクです。",
+  action: "セットアッププロンプトを開く"
+};
+
+const starterSteps = [
+  {
+    title: "1. 作業場所を作る",
+    time: "5分",
+    file: "02_FOLDER_TEMPLATE.md",
+    href: "affiliate-bonus-pack/02_FOLDER_TEMPLATE.md",
+    body: "Codex用フォルダを1つ作り、参考資料と成果物の置き場所を分けます。ここを先に作ると、あとから迷いにくくなります。",
+    action: "フォルダひな形を見る"
+  },
+  {
+    title: "2. AGENTS.mdを1本置く",
+    time: "5分",
+    file: "01_AGENTS_STARTER.md",
+    href: "affiliate-bonus-pack/01_AGENTS_STARTER.md",
+    body: "用途に近いテンプレを1つだけ貼ります。最初から複数入れず、まず1回試してから足すのがコツです。",
+    action: "AGENTS.mdテンプレを見る"
+  },
+  {
+    title: "3. 依頼文を1本試す",
+    time: "5分",
+    file: "03_PROMPT_PACK.md",
+    href: "affiliate-bonus-pack/03_PROMPT_PACK.md",
+    body: "今やりたい作業に近いプロンプトを1本だけ使います。うまくいった文面は、次回用に保存します。",
+    action: "依頼文集を開く"
+  }
+];
+
+const bonuses = [
+  {
+    badge: "特典1",
+    title: "コピペで使える AGENTS.md スターター",
+    file: "01_AGENTS_STARTER.md",
+    href: "affiliate-bonus-pack/01_AGENTS_STARTER.md",
+    role: "毎回同じ説明をしなくて済むように、Codexへ守ってほしい基本ルールを置く特典です。",
+    bestFor: "返答のトーンや粒度が毎回ブレる人",
+    firstAction: "日常業務用か記事作成用を1本だけ貼って、軽い依頼を1回試す",
+    avoid: "記事用、調査用、スライド用を最初から全部混ぜる"
+  },
+  {
+    badge: "特典2",
+    title: "15分で整う Codex作業フォルダひな形",
+    file: "02_FOLDER_TEMPLATE.md",
+    href: "affiliate-bonus-pack/02_FOLDER_TEMPLATE.md",
+    role: "参考資料、下書き、成果物を分けて、作業を散らかりにくくする特典です。",
+    bestFor: "どこに何を置けばいいか迷う人",
+    firstAction: "`Codex_Workspace` を作り、7つの基本フォルダだけ先に作る",
+    avoid: "成果物と元ファイルを同じ場所に混ぜる"
+  },
+  {
+    badge: "特典3",
+    title: "最初の成果が出るコピペ依頼文集",
+    file: "03_PROMPT_PACK.md",
+    href: "affiliate-bonus-pack/03_PROMPT_PACK.md",
+    role: "要約、記事、SNS、リサーチ、スライド、Codex運用をすぐ試せるプロンプト集です。",
+    bestFor: "何を頼めばいいかわからない人",
+    firstAction: "5箱プロンプトを1本使い、結果を見て条件を1行だけ足す",
+    avoid: "最初から完璧な依頼文を作ろうとする"
+  },
+  {
+    badge: "特典4",
+    title: "あなた用の初動アドバイス用テンプレ",
+    file: "04_CUSTOMIZE_BONUS.md",
+    href: "affiliate-bonus-pack/04_CUSTOMIZE_BONUS.md",
+    role: "仕事や発信内容に合わせて、最初に使うべき型を整理するためのミニ個別化テンプレです。",
+    bestFor: "自分の用途にどう落とし込むか決めたい人",
+    firstAction: "仕事、最初にやりたいこと、よく扱うファイルを短く書き出す",
+    avoid: "何でも相談OKにして範囲を広げすぎる"
+  }
+];
+
+const chooserRows = [
+  ["まとめて自動作成したい", "00_CODEX_SETUP_PROMPT.md", "Codexに丸ごと投げる"],
+  ["何から始めればいいかわからない", "02_FOLDER_TEMPLATE.md", "まず作業場所を作る"],
+  ["Codexの返答が毎回ブレる", "01_AGENTS_STARTER.md", "基本ルールを1本だけ置く"],
+  ["依頼文が思いつかない", "03_PROMPT_PACK.md", "コピペで1回試す"],
+  ["自分の用途に寄せたい", "04_CUSTOMIZE_BONUS.md", "最初の使い道を整理する"]
+];
+
+const markdownGuide = [
+  {
+    title: "mdファイルはアプリではありません",
+    body: "Markdownという形式のテキストファイルです。ダブルクリックして読む、必要な部分をコピーする、Codexに渡す、という使い方をします。"
+  },
+  {
+    title: "最初は編集しなくてOK",
+    body: "購入直後は、mdファイルを作り込む必要はありません。まず中のプロンプトをコピーしてCodexに貼るだけで十分です。"
+  },
+  {
+    title: "Codexと相性がいい保存形式です",
+    body: "見出し、箇条書き、コードブロックをそのまま読めるので、Codexにルールや手順を渡しやすい形式です。"
+  },
+  {
+    title: "迷ったらWEBだけ見ればOK",
+    body: "このWEBガイドが入口です。mdファイルは詳しい中身やコピペ用の保管場所として使ってください。"
+  }
+];
+
+const faq = [
+  {
+    q: "全部読む必要はありますか？",
+    a: "ありません。最初はフォルダ、AGENTS.md、プロンプト1本だけで十分です。自分用に調整したい場合だけ、個別化テンプレを開いてください。"
+  },
+  {
+    q: "mdファイルは何をすればいいですか？",
+    a: "まずは開いて中身を見るだけで大丈夫です。プロンプトが入っている場合は、必要な部分をコピーしてCodexに貼ってください。"
+  },
+  {
+    q: "最初にAGENTS.mdへ何を書けばいいですか？",
+    a: "迷ったら日常業務用を1本だけ貼ってください。使いながらズレた点を1行ずつ足すほうが失敗しにくいです。"
+  },
+  {
+    q: "参考資料が少なくても使えますか？",
+    a: "使えます。最初は過去記事、過去投稿、考え方メモのような資料を3つだけ入れれば十分です。"
+  },
+  {
+    q: "PDFではなくWEBを見る意味は？",
+    a: "WEB版は、迷ったときに必要な特典へ戻りやすい入口です。保存用が欲しい場合は、このページをブラウザからPDF化できます。"
+  }
+];
+
+function App() {
+  return (
+    <div className="bonus-guide-page">
+      <header className="hero">
+        <div className="bonus-shell">
+          <div className="hero-panel">
+            <div className="hero-grid">
+              <div>
+                <span className="eyebrow">リンク購入者限定</span>
+                <h1>Codexアプリの教科書<br />購入者限定スターター特典</h1>
+                <p className="hero-lead">
+                  購入直後に最初に開くスタート画面です。
+                  作業場所、AGENTS.md、依頼文までをつなげて、15分でCodexを1回動かせるところまで案内します。
+                </p>
+                <div className="hero-actions">
+                  <a className="hero-button hero-button-primary" href="#start">
+                    まず1回動かす
+                  </a>
+                  <a className="hero-button hero-button-secondary" href="#bonuses">
+                    特典の中身を見る
+                  </a>
+                </div>
+              </div>
+
+              <div className="hero-side">
+                <div className="mini-card">
+                  <strong>最初にやること</strong>
+                  <p>一番ラクなのは、セットアッププロンプトをCodexに丸ごと貼ることです。手作業なら3ステップで始められます。</p>
+                </div>
+                <div className="mini-card">
+                  <strong>向いている人</strong>
+                  <p>Codexを買った直後に、何から触ればいいか迷っている人。まず小さく成功体験を作りたい人です。</p>
+                </div>
+                <div className="mini-card">
+                  <strong>読み方</strong>
+                  <p>上から全部読まず、今の状況に合う特典だけ開いてください。迷ったら15分スタートへ戻ればOKです。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section className="section" id="start">
+          <div className="bonus-shell">
+            <div className="section-header">
+              <div>
+                <p className="section-kicker">Quick Start</p>
+                <h2>まず15分でここまでやればOK</h2>
+                <p className="section-copy">
+                  完璧な設定は後回しで大丈夫です。迷ったら最短ルートを使い、手作業で進めたい人だけ3ステップを見てください。
+                </p>
+              </div>
+            </div>
+
+            <article className="setup-card">
+              <div>
+                <p className="section-kicker">{setupStep.time}</p>
+                <h3>{setupStep.title}</h3>
+                <p>{setupStep.body}</p>
+              </div>
+              <a className="file-link" href={setupStep.href}>
+                {setupStep.action}
+              </a>
+            </article>
+
+            <div className="subsection-heading">
+              <h3>手作業で進めるなら、この3つだけ</h3>
+              <p>セットアッププロンプトを使わない場合も、やることは同じです。</p>
+            </div>
+
+            <div className="launch-grid">
+              {starterSteps.map((step) => (
+                <article className="launch-card" key={step.file}>
+                  <p className="section-kicker">{step.time}</p>
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
+                  <a className="file-link" href={step.href}>
+                    {step.action}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="agents-visual">
+          <div className="bonus-shell">
+            <div className="visual-guide-card">
+              <div className="section-header visual-header">
+                <div>
+                  <p className="section-kicker">Visual Guide</p>
+                  <h2>AGENTS.mdは、こう作ればOK</h2>
+                  <p className="section-copy">
+                    日常業務用テンプレは、作業フォルダ直下の <code>AGENTS.md</code> に貼るだけです。
+                    迷ったらこの図の3ステップだけ見てください。
+                  </p>
+                </div>
+                <a className="file-link" href="affiliate-bonus-pack/01_AGENTS_STARTER.md">
+                  01_AGENTS_STARTER.md
+                </a>
+              </div>
+              <img
+                className="workflow-image"
+                src="affiliate-bonus-pack/images/agents-daily-work-setup.svg"
+                alt="日常業務用AGENTS.mdの作り方。作業フォルダ直下にAGENTS.mdを作り、テンプレを貼り、そのフォルダでCodexに依頼する流れ。"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="markdown">
+          <div className="bonus-shell">
+            <div className="section-header">
+              <div>
+                <p className="section-kicker">Markdown Files</p>
+                <h2>mdファイルの扱い方</h2>
+                <p className="section-copy">
+                  mdファイルを難しく考えなくて大丈夫です。最初は「説明書」と「コピペ置き場」だと思ってください。
+                </p>
+              </div>
+            </div>
+
+            <div className="overview-grid">
+              {markdownGuide.map((item, index) => (
+                <article className="overview-card" key={item.title}>
+                  <span className="overview-number">{index + 1}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="bonus-card" style={{ marginTop: 18, padding: 22 }}>
+              <h3>セットアッププロンプトの使い方はこれだけ</h3>
+              <ol className="step-list" style={{ marginTop: 14 }}>
+                <li><code>00_CODEX_SETUP_PROMPT.md</code> を開く</li>
+                <li>中にある「コピペ用プロンプト」を丸ごとコピーする</li>
+                <li>Codexに貼って、作成予定を確認してから実行してもらう</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="bonuses">
+          <div className="bonus-shell">
+            <div className="section-header">
+              <div>
+                <p className="section-kicker">Bonus Pack</p>
+                <h2>特典の役割</h2>
+                <p className="section-copy">
+                  それぞれ役割が違います。最初から全部使わず、困っている場面に合うものだけ開いてください。
+                </p>
+              </div>
+            </div>
+
+            <div className="bonus-grid">
+              {bonuses.map((bonus) => (
+                <article className="bonus-card compact-card" key={bonus.file}>
+                  <div className="bonus-card-header">
+                    <span className="bonus-badge">{bonus.badge}</span>
+                    <div>
+                      <h3>{bonus.title}</h3>
+                      <p className="bonus-subtitle">{bonus.role}</p>
+                    </div>
+                  </div>
+
+                  <div className="bonus-layout">
+                    <div className="bonus-panel">
+                      <h4>こんな人向け</h4>
+                      <p>{bonus.bestFor}</p>
+                      <h4>最初の一手</h4>
+                      <p>{bonus.firstAction}</p>
+                    </div>
+                    <div className="bonus-panel">
+                      <h4>避けたいこと</h4>
+                      <p>{bonus.avoid}</p>
+                      <a className="file-link" href={bonus.href}>
+                        {bonus.file} を開く
+                      </a>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="bonus-shell">
+            <div className="section-header">
+              <div>
+                <p className="section-kicker">Choose</p>
+                <h2>迷ったときは、この表だけ見てください</h2>
+                <p className="section-copy">
+                  今の状態に一番近い行を選ぶだけで、開くファイルが決まります。
+                </p>
+              </div>
+            </div>
+
+            <div className="choice-table" role="table" aria-label="迷ったときの選び方">
+              {chooserRows.map(([status, file, action]) => (
+                <div className="choice-row" role="row" key={status}>
+                  <strong>{status}</strong>
+                  <code>{file}</code>
+                  <span>{action}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="bonus-shell">
+            <div className="section-header">
+              <div>
+                <p className="section-kicker">FAQ</p>
+                <h2>よくある詰まりどころ</h2>
+              </div>
+            </div>
+
+            <div className="faq-grid">
+              {faq.map((item) => (
+                <article className="faq-card" key={item.q}>
+                  <h3>{item.q}</h3>
+                  <p>{item.a}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <section className="cta">
+        <div className="bonus-shell">
+          <div className="cta-panel">
+            <div>
+              <h2>この特典のゴールは、今日1回だけCodexを動かすことです。</h2>
+              <p>
+                まずは作業フォルダを作り、AGENTS.mdを1本置き、プロンプトを1本試してください。
+                その小さな1回ができれば、この特典パックは十分に役割を果たしています。
+              </p>
+              <div className="pill-row" style={{ marginTop: 18 }}>
+                <span className="pill">全部読まなくてOK</span>
+                <span className="pill">最初は15分だけ</span>
+                <span className="pill">うまくいった型だけ残す</span>
+              </div>
+            </div>
+
+            <aside className="cta-side">
+              <h3>迷ったら、ここへ戻ってください</h3>
+              <p>
+                このページが入口です。特典ファイルを開いて詰まったときも、
+                上の「迷ったときはこの表」か「15分スタート」に戻れば次の一手が見つかります。
+              </p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("bonus-guide-root")).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
