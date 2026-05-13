@@ -339,6 +339,129 @@ a {
   background: #f8f7ef;
 }
 
+.fujin-card {
+  overflow: hidden;
+  border: 1px solid rgba(23, 32, 51, 0.1);
+  border-radius: 30px;
+  background:
+    linear-gradient(140deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 229, 0.78)),
+    var(--paper);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.fujin-note {
+  margin-top: 18px;
+  border: 1px solid rgba(15, 138, 131, 0.14);
+  border-radius: 22px;
+  background: rgba(226, 250, 247, 0.62);
+  padding: 18px;
+}
+
+.fujin-note strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.02rem;
+}
+
+.fujin-note p,
+.fujin-caution {
+  margin: 0;
+  color: var(--muted);
+}
+
+.fujin-note code {
+  border-radius: 8px;
+  background: rgba(15, 138, 131, 0.1);
+  padding: 2px 6px;
+  color: var(--brand-deep);
+  font-weight: 800;
+}
+
+.fujin-grid,
+.fujin-steps,
+.fujin-files {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.fujin-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fujin-use-card {
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.74);
+  padding: 18px;
+}
+
+.fujin-use-card h3,
+.fujin-steps h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.fujin-use-card p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.fujin-steps {
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.fujin-steps > div {
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.76);
+  padding: 18px;
+}
+
+.fujin-prompt .code-box {
+  margin-top: 12px;
+  font-size: 0.84rem;
+}
+
+.fujin-files {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fujin-file {
+  display: block;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.74);
+  padding: 14px;
+  text-decoration: none;
+}
+
+.fujin-file:hover {
+  border-color: rgba(15, 138, 131, 0.34);
+  background: rgba(226, 250, 247, 0.6);
+}
+
+.fujin-file code {
+  display: block;
+  color: var(--brand-deep);
+  font-weight: 800;
+}
+
+.fujin-file span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.fujin-caution {
+  margin-top: 18px;
+  border-top: 1px solid rgba(23, 32, 51, 0.08);
+  padding-top: 14px;
+  font-size: 0.92rem;
+}
+
 .bonus-card {
   padding: 26px;
 }
@@ -586,6 +709,8 @@ a {
 @media (max-width: 980px) {
   .hero-grid,
   .setup-card,
+  .fujin-grid,
+  .fujin-steps,
   .bonus-layout,
   .cta-panel,
   .choice-row {
@@ -594,7 +719,8 @@ a {
 
   .overview-grid,
   .faq-grid,
-  .launch-grid {
+  .launch-grid,
+  .fujin-files {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -628,7 +754,8 @@ a {
 
   .overview-grid,
   .faq-grid,
-  .launch-grid {
+  .launch-grid,
+  .fujin-files {
     grid-template-columns: 1fr;
   }
 
