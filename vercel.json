@@ -1,0 +1,14 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/bonus-guide.html",
+      "destination": "/"
+    },
+    {
+      "source": "/bonus-guide.source.html",
+      "destination": "/"
+    }
+  ]
+}
