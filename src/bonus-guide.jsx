@@ -178,7 +178,7 @@ function App() {
               <div className="hero-side">
                 <div className="mini-card">
                   <strong>この特典に入っているもの</strong>
-                  <ul style={{ margin: "8px 0 0", paddingLeft: "1.2rem", color: "var(--muted)", fontSize: "0.95rem" }}>
+                  <ul className="mini-card-list">
                     <li>AGENTS.md スターター</li>
                     <li>作業フォルダひな形</li>
                     <li>コピペ依頼文集</li>
@@ -282,7 +282,7 @@ function App() {
             <div className="section-header">
               <div>
                 <p className="section-kicker">Bonus Pack</p>
-                <h2>特典の役割</h2>
+                <h2>特典1〜4の使い方</h2>
                 <p className="section-copy">
                   それぞれ役割が違います。最初から全部使わず、困っている場面に合うものだけ開いてください。
                 </p>
@@ -336,7 +336,7 @@ function App() {
                 <div className="choice-row" role="row" key={status}>
                   <strong>{status}</strong>
                   <code>{file}</code>
-                  <span>{action}</span>
+                  <span className="choice-action">{action}</span>
                 </div>
               ))}
             </div>
@@ -372,7 +372,7 @@ function App() {
                   <h2>Fujin AI Skills の使い方</h2>
                   <p className="section-copy">
                     <code>fujin-AI-skills</code> は、fujinさんの思考のクセ、文体、判断軸をAIに読み込ませるための追加特典です。
-                    ただのプロンプト集ではなく、発信やローンチの壁打ち相手として使うためのSkillセットです。
+                    発信やローンチの壁打ち相手として使うためのSkillセットです。
                   </p>
                 </div>
                 <a className="file-link" href="fujin-AI-skills/README.md">

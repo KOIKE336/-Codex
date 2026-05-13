@@ -170,6 +170,14 @@ a {
   font-size: 0.95rem;
 }
 
+.mini-card-list {
+  margin: 8px 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
 .section {
   padding: 18px 0 0;
 }
@@ -657,6 +665,11 @@ a {
 
 .choice-row span {
   color: var(--muted);
+}
+
+.choice-row .choice-action {
+  color: var(--ink);
+  font-weight: 800;
 }
 
 .cta {
