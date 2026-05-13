@@ -89,40 +89,6 @@ const chooserRows = [
   ["自分の用途に寄せたい", "04_CUSTOMIZE_BONUS.md", "最初の使い道を整理する"]
 ];
 
-const markdownGuide = [
-  {
-    title: "mdファイルはアプリではありません",
-    body: "Markdownという形式のテキストファイルです。ダブルクリックして読む、必要な部分をコピーする、Codexに渡す、という使い方をします。"
-  },
-  {
-    title: "最初は編集しなくてOK",
-    body: "購入直後は、mdファイルを作り込む必要はありません。まず中のプロンプトをコピーしてCodexに貼るだけで十分です。"
-  },
-  {
-    title: "Codexと相性がいい保存形式です",
-    body: "見出し、箇条書き、コードブロックをそのまま読めるので、Codexにルールや手順を渡しやすい形式です。"
-  },
-  {
-    title: "迷ったらWEBだけ見ればOK",
-    body: "このWEBガイドが入口です。mdファイルは詳しい中身やコピペ用の保管場所として使ってください。"
-  }
-];
-
-const fujinUseCases = [
-  {
-    title: "発信ネタをFujin式に切る",
-    body: "「このテーマ、Fujinならどう切る？」と聞くと、一般論ではなく発信者目線の切り口を出しやすくなります。"
-  },
-  {
-    title: "原稿をFujin風に整える",
-    body: "記事、X、LINE、メルマガの下書きを貼って、結論先出し・短い段落・背中を押す文体へ寄せられます。"
-  },
-  {
-    title: "ローンチや特典を壁打ちする",
-    body: "商品設計、特典、販売タイミングで迷ったときに、fujinさんの判断軸を補助輪として使えます。"
-  }
-];
-
 const fujinFiles = [
   ["README.md", "まず読む使い方ガイド"],
   ["SKILL.md", "AIに読み込ませる入口"],
@@ -304,13 +270,13 @@ function App() {
                     <div className="bonus-panel">
                       <h4>最初の一手</h4>
                       <p>{bonus.firstAction}</p>
+                      <a className="file-link" href={bonus.href}>
+                        {bonus.file} を開く
+                      </a>
                     </div>
                     <div className="bonus-panel">
                       <h4>避けたいこと</h4>
                       <p>{bonus.avoid}</p>
-                      <a className="file-link" href={bonus.href}>
-                        {bonus.file} を開く
-                      </a>
                     </div>
                   </div>
                 </article>
@@ -433,6 +399,7 @@ function App() {
               <p>
                 まずは作業フォルダを作り、AGENTS.mdを1本置き、プロンプトを1本試してください。
                 その小さな1回ができれば、この特典パックは十分に役割を果たしています。
+                それだけで、次に頼むときの迷い方が変わります。
               </p>
               <div className="pill-row" style={{ marginTop: 18 }}>
                 <span className="pill">全部読まなくてOK</span>

@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(mkdir -p /Users/koikeyuuto/Desktop/開発/website/Codex-新特典/.claude)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(sed -n '173,182p' /Users/koikeyuuto/Desktop/開発/website/Codex-新特典/src/bonus-guide.css)",
+      "Bash(sed -n '668,678p' /Users/koikeyuuto/Desktop/開発/website/Codex-新特典/src/bonus-guide.css)"
     ]
   }
 }

@@ -212,16 +212,11 @@ a {
   color: var(--muted);
 }
 
-.overview-grid,
 .bonus-grid,
 .faq-grid,
 .launch-grid {
   display: grid;
   gap: 18px;
-}
-
-.overview-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .bonus-grid {
@@ -236,7 +231,6 @@ a {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.overview-card,
 .faq-card,
 .launch-card,
 .bonus-card {
@@ -282,13 +276,11 @@ a {
   margin: 8px 0 14px;
 }
 
-.overview-card,
 .faq-card,
 .launch-card {
   padding: 22px;
 }
 
-.overview-card h3,
 .faq-card h3,
 .launch-card h3,
 .bonus-card h3 {
@@ -296,24 +288,11 @@ a {
   font-size: 1.08rem;
 }
 
-.overview-card p,
 .faq-card p,
 .launch-card p,
 .bonus-card p {
   margin: 10px 0 0;
   color: var(--muted);
-}
-
-.overview-number {
-  display: inline-flex;
-  width: 38px;
-  height: 38px;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 14px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(15, 138, 131, 0.14), rgba(242, 184, 75, 0.2));
-  font-weight: 800;
 }
 
 .visual-guide-card {
@@ -372,8 +351,7 @@ a {
   font-size: 1.02rem;
 }
 
-.fujin-note p,
-.fujin-caution {
+.fujin-note p {
   margin: 0;
   color: var(--muted);
 }
@@ -386,7 +364,6 @@ a {
   font-weight: 800;
 }
 
-.fujin-grid,
 .fujin-steps,
 .fujin-files {
   display: grid;
@@ -394,26 +371,9 @@ a {
   margin-top: 18px;
 }
 
-.fujin-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.fujin-use-card {
-  border: 1px solid rgba(23, 32, 51, 0.08);
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.74);
-  padding: 18px;
-}
-
-.fujin-use-card h3,
 .fujin-steps h3 {
   margin: 0;
   font-size: 1.05rem;
-}
-
-.fujin-use-card p {
-  margin: 8px 0 0;
-  color: var(--muted);
 }
 
 .fujin-steps {
@@ -461,13 +421,6 @@ a {
   margin-top: 4px;
   color: var(--muted);
   font-size: 0.9rem;
-}
-
-.fujin-caution {
-  margin-top: 18px;
-  border-top: 1px solid rgba(23, 32, 51, 0.08);
-  padding-top: 14px;
-  font-size: 0.92rem;
 }
 
 .bonus-card {
@@ -544,16 +497,12 @@ a {
   background: var(--brand-deep);
 }
 
-.bonus-list,
-.step-list,
-.check-list {
+.step-list {
   margin: 0;
   padding-left: 1.25rem;
 }
 
-.bonus-list li,
-.step-list li,
-.check-list li {
+.step-list li {
   margin: 0 0 8px;
 }
 
@@ -588,48 +537,6 @@ a {
   padding: 8px 12px;
   font-size: 0.92rem;
   color: var(--muted);
-}
-
-.timeline {
-  display: grid;
-  gap: 14px;
-}
-
-.timeline-card {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 14px;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  background: var(--paper);
-  padding: 18px;
-  box-shadow: var(--shadow);
-}
-
-.timeline-day {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 78px;
-  min-height: 78px;
-  border-radius: 22px;
-  background: linear-gradient(145deg, rgba(15, 138, 131, 0.14), rgba(242, 184, 75, 0.18));
-  font-weight: 800;
-  text-align: center;
-}
-
-.timeline-card h3 {
-  margin: 0;
-}
-
-.timeline-card p {
-  margin: 8px 0 0;
-  color: var(--muted);
-}
-
-.timeline-card ul {
-  margin: 12px 0 0;
-  padding-left: 1.2rem;
 }
 
 .choice-table {
@@ -699,11 +606,6 @@ a {
   color: var(--muted);
 }
 
-.cta-list {
-  margin: 16px 0 0;
-  padding-left: 1.2rem;
-}
-
 .cta-side {
   border: 1px dashed rgba(23, 32, 51, 0.16);
   border-radius: 24px;
@@ -722,7 +624,6 @@ a {
 @media (max-width: 980px) {
   .hero-grid,
   .setup-card,
-  .fujin-grid,
   .fujin-steps,
   .bonus-layout,
   .cta-panel,
@@ -730,7 +631,6 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .overview-grid,
   .faq-grid,
   .launch-grid,
   .fujin-files {
@@ -765,7 +665,6 @@ a {
     font-size: 1.75rem;
   }
 
-  .overview-grid,
   .faq-grid,
   .launch-grid,
   .fujin-files {
@@ -793,7 +692,4 @@ a {
     grid-template-columns: 1fr;
   }
 
-  .timeline-card {
-    grid-template-columns: 1fr;
-  }
 }
