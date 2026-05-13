@@ -86,8 +86,7 @@ const chooserRows = [
   ["何から始めればいいかわからない", "02_FOLDER_TEMPLATE.md", "まず作業場所を作る"],
   ["Codexの返答が毎回ブレる", "01_AGENTS_STARTER.md", "基本ルールを1本だけ置く"],
   ["依頼文が思いつかない", "03_PROMPT_PACK.md", "コピペで1回試す"],
-  ["自分の用途に寄せたい", "04_CUSTOMIZE_BONUS.md", "最初の使い道を整理する"],
-  ["Fujin式で壁打ち・リライトしたい", "fujin-AI-skills/README.md", "Skillの使い方を確認する"]
+  ["自分の用途に寄せたい", "04_CUSTOMIZE_BONUS.md", "最初の使い道を整理する"]
 ];
 
 const markdownGuide = [
@@ -236,6 +235,14 @@ function App() {
                 </article>
               ))}
             </div>
+
+            <div className="subsection-heading" style={{ marginTop: 18 }}>
+              <h3>mdファイルって何？</h3>
+              <p>
+                テキストファイルの一種です。ダブルクリックして開き、中のプロンプトをコピーしてCodexに貼るだけで使えます。
+                最初は編集しなくてOKです。
+              </p>
+            </div>
           </div>
         </section>
 
@@ -261,107 +268,6 @@ function App() {
                 alt="日常業務用AGENTS.mdの作り方。作業フォルダ直下にAGENTS.mdを作り、テンプレを貼り、そのフォルダでCodexに依頼する流れ。"
               />
             </div>
-          </div>
-        </section>
-
-        <section className="section" id="fujin-skills">
-          <div className="bonus-shell">
-            <div className="fujin-card">
-              <div className="section-header visual-header">
-                <div>
-                  <p className="section-kicker">Extra Bonus</p>
-                  <h2>Fujin AI Skills の使い方</h2>
-                  <p className="section-copy">
-                    <code>fujin-AI-skills</code> は、fujinさんの思考のクセ、文体、判断軸をAIに読み込ませるための追加特典です。
-                    ただのプロンプト集ではなく、発信やローンチの壁打ち相手として使うためのSkillセットです。
-                  </p>
-                </div>
-                <a className="file-link" href="fujin-AI-skills/README.md">
-                  使い方ガイドを開く
-                </a>
-              </div>
-
-              <div className="fujin-note">
-                <strong>まず覚えることは1つだけ</strong>
-                <p>
-                  最初は <code>README.md</code> と <code>SKILL.md</code> だけ見れば十分です。
-                  「Fujin式で壁打ちして」「Fujin風にリライトして」と頼むときに使います。
-                </p>
-              </div>
-
-              <div className="fujin-grid">
-                {fujinUseCases.map((item, index) => (
-                  <article className="fujin-use-card" key={item.title}>
-                    <span className="overview-number">{index + 1}</span>
-                    <h3>{item.title}</h3>
-                    <p>{item.body}</p>
-                  </article>
-                ))}
-              </div>
-
-              <div className="fujin-steps">
-                <div>
-                  <h3>Codexで使うなら、この3ステップ</h3>
-                  <ol className="step-list">
-                    <li><code>fujin-AI-skills/README.md</code> を開いて、全体像を確認する</li>
-                    <li><code>SKILL.md</code> をCodexに読ませて「この指示に従って」と伝える</li>
-                    <li>原稿や相談内容を貼り、「Fujin式で壁打ちして」と依頼する</li>
-                  </ol>
-                </div>
-                <div className="fujin-prompt">
-                  <h3>最初のコピペ例</h3>
-                  <pre className="code-box">{`fujin-AI-skills/SKILL.md を読んでください。
-そのうえで、以下の原稿をFujin式にリライトしてください。
-
-目的:
-- 読者の背中を押す
-- AIっぽさを減らす
-- 結論を先に出す
-
-原稿:
-（ここに文章を貼る）`}</pre>
-                </div>
-              </div>
-
-              <div className="fujin-files" aria-label="Fujin AI Skills の中身">
-                {fujinFiles.map(([file, role]) => (
-                  <a className="fujin-file" href={`fujin-AI-skills/${file}`} key={file}>
-                    <code>{file}</code>
-                    <span>{role}</span>
-                  </a>
-                ))}
-              </div>
-
-              <p className="fujin-caution">
-                注意: これはfujinさん本人の代替ではなく、fujinさんの思考パターンを使って自分で考えるための補助輪です。
-                回答を「fujinさん本人の公式見解」として外部公開する使い方は避けてください。
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="section" id="markdown">
-          <div className="bonus-shell">
-            <div className="section-header">
-              <div>
-                <p className="section-kicker">Markdown Files</p>
-                <h2>mdファイルの扱い方</h2>
-                <p className="section-copy">
-                  mdファイルを難しく考えなくて大丈夫です。最初は「説明書」と「コピペ置き場」だと思ってください。
-                </p>
-              </div>
-            </div>
-
-            <div className="overview-grid">
-              {markdownGuide.map((item, index) => (
-                <article className="overview-card" key={item.title}>
-                  <span className="overview-number">{index + 1}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.body}</p>
-                </article>
-              ))}
-            </div>
-
           </div>
         </section>
 
@@ -449,6 +355,58 @@ function App() {
                   <p>{item.a}</p>
                 </article>
               ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section" id="fujin-skills">
+          <div className="bonus-shell">
+            <div className="fujin-card">
+              <div className="section-header visual-header">
+                <div>
+                  <p className="section-kicker">Extra Bonus</p>
+                  <h2>Fujin AI Skills の使い方</h2>
+                  <p className="section-copy">
+                    <code>fujin-AI-skills</code> は、fujinさんの思考のクセ、文体、判断軸をAIに読み込ませるための追加特典です。
+                    ただのプロンプト集ではなく、発信やローンチの壁打ち相手として使うためのSkillセットです。
+                  </p>
+                </div>
+                <a className="file-link" href="fujin-AI-skills/README.md">
+                  使い方ガイドを開く
+                </a>
+              </div>
+
+              <div className="fujin-note">
+                <strong>まず覚えることは1つだけ</strong>
+                <p>
+                  最初は <code>README.md</code> と <code>SKILL.md</code> だけ見れば十分です。
+                  「Fujin式で壁打ちして」「Fujin風にリライトして」と頼むときに使います。
+                </p>
+              </div>
+
+              <div className="fujin-steps">
+                <div>
+                  <h3>Codexで使うなら、この3ステップ</h3>
+                  <ol className="step-list">
+                    <li><code>fujin-AI-skills/README.md</code> を開いて、全体像を確認する</li>
+                    <li><code>SKILL.md</code> をCodexに読ませて「この指示に従って」と伝える</li>
+                    <li>原稿や相談内容を貼り、「Fujin式で壁打ちして」と依頼する</li>
+                  </ol>
+                </div>
+                <div className="fujin-prompt">
+                  <h3>最初のコピペ例</h3>
+                  <pre className="code-box">{`fujin-AI-skills/SKILL.md を読んでください。
+そのうえで、以下の原稿をFujin式にリライトしてください。
+
+目的:
+- 読者の背中を押す
+- AIっぽさを減らす
+- 結論を先に出す
+
+原稿:
+（ここに文章を貼る）`}</pre>
+                </div>
+              </div>
             </div>
           </div>
         </section>
