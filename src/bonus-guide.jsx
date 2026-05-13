@@ -177,8 +177,14 @@ function App() {
 
               <div className="hero-side">
                 <div className="mini-card">
-                  <strong>最初にやること</strong>
-                  <p>一番ラクなのは、セットアッププロンプトをCodexに丸ごと貼ることです。手作業なら3ステップで始められます。</p>
+                  <strong>この特典に入っているもの</strong>
+                  <ul style={{ margin: "8px 0 0", paddingLeft: "1.2rem", color: "var(--muted)", fontSize: "0.95rem" }}>
+                    <li>AGENTS.md スターター</li>
+                    <li>作業フォルダひな形</li>
+                    <li>コピペ依頼文集</li>
+                    <li>初動アドバイス用テンプレ</li>
+                    <li>Fujin AI Skills（追加特典）</li>
+                  </ul>
                 </div>
                 <div className="mini-card">
                   <strong>向いている人</strong>
@@ -296,8 +302,6 @@ function App() {
 
                   <div className="bonus-layout">
                     <div className="bonus-panel">
-                      <h4>こんな人向け</h4>
-                      <p>{bonus.bestFor}</p>
                       <h4>最初の一手</h4>
                       <p>{bonus.firstAction}</p>
                     </div>
@@ -406,6 +410,15 @@ function App() {
 原稿:
 （ここに文章を貼る）`}</pre>
                 </div>
+              </div>
+
+              <div className="fujin-files" aria-label="Fujin AI Skills の中身">
+                {fujinFiles.map(([file, role]) => (
+                  <a className="fujin-file" href={`fujin-AI-skills/${file}`} key={file}>
+                    <code>{file}</code>
+                    <span>{role}</span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
